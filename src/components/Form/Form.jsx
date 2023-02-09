@@ -16,22 +16,21 @@ const Form = () => {
             city,
             subject,
         };
-
         tg.sendData(JSON.stringify(data));
-    }, [country, city, subject, tg]);
+    }, [country, city, subject]);
 
     useEffect(() => {
-        tg.onEvent('mainButtonCLick', onSendData);
+        tg.onEvent('mainButtonClicked', onSendData);
         return () => {
-            tg.offEvent('mainButtonCLick', onSendData);
+            tg.offEvent('mainButtonClicked', onSendData);
         };
-    }, [onSendData, tg]);
+    }, [onSendData]);
 
     useEffect(() => {
         tg.MainButton.setParams({
             text: 'Надіслати дані',
         });
-    }, [tg.MainButton]);
+    }, []);
 
     useEffect(() => {
         if (!city || !country) {
@@ -39,7 +38,7 @@ const Form = () => {
         } else {
             tg.MainButton.show();
         }
-    }, [country, city, tg.MainButton]);
+    }, []);
 
     const onChangeCountry = (e) => {
         setCountry(e.target.value);
