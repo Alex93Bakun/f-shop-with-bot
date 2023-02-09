@@ -14,7 +14,7 @@ const Form = () => {
         tg.MainButton.setParams({
             text: 'Надіслати дані',
         });
-    }, []);
+    }, [tg.MainButton]);
 
     useEffect(() => {
         if (!city || !country) {
@@ -22,7 +22,7 @@ const Form = () => {
         } else {
             tg.MainButton.show();
         }
-    }, [country, city]);
+    }, [country, city, tg.MainButton]);
 
     const onChangeCountry = (e) => {
         setCountry(e.target.value);
