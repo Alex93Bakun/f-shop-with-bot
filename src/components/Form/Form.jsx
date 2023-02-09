@@ -8,19 +8,19 @@ const Form = () => {
     const [country, setCountry] = useState('');
     const [city, setCity] = useState('');
     const [subject, setSubject] = useState('physical');
-    const { tg } = useTelegram()
+    const { tg } = useTelegram();
 
     useEffect(() => {
         tg.MainButton.setParams({
-            text: 'Надіслати дані'
-        })
-    }, [])
+            text: 'Надіслати дані',
+        });
+    }, []);
 
     useEffect(() => {
-        if(!city || !country) {
-            tg.MainButton.hide()
+        if (!city || !country) {
+            tg.MainButton.hide();
         } else {
-            tg.MainButton.show()
+            tg.MainButton.show();
         }
     }, [country, city]);
 
